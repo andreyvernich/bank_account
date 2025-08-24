@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 
 public class Account {
-    static int count = 0;
+    private static int count = 0;
 
     private final int ID;
     private String name;
@@ -10,7 +10,7 @@ public class Account {
 
     public Account(String name, BigDecimal amount, boolean isActive) {
         this.ID = count;
-        Account.count++;
+        count++;
         this.name = name;
         this.amount = amount;
         this.isActive = isActive;
@@ -46,11 +46,12 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" +
-                "ID=" + ID +
-                ", name='" + name + '\'' +
-                ", amount=" + amount +
-                ", isActive=" + isActive +
-                '}';
+        final StringBuilder sb = new StringBuilder("Account{");
+        sb.append("ID=").append(ID);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", amount=").append(amount);
+        sb.append(", isActive=").append(isActive);
+        sb.append('}');
+        return sb.toString();
     }
 }
